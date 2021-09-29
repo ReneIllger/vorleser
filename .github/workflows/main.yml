@@ -30,12 +30,10 @@ jobs:
       - name: Build
         run: gatsby build
       
-      - name: Verify build
-        run: ls -la public
-
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
           server: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLOY_PASS }}
+          local-dir: ./public/
